@@ -114,8 +114,29 @@ public class Main {
         //importante, en JAVA no es lo mismo 1/3 que 1.0/3.0
         //el resultado de 1/3 es 0 porque es una division de enteros
         //el resultado de 1.0/3.0 es 0.333333 porque es una division de doubles
+        System.out.println(1/3); //cociente de division de enteros
+        System.out.println(1%3); //residuo de division de enteros
+        System.out.println(1.0/3.0);
+        System.out.println(5/2); //cociente de division de enteros
+        System.out.println(5%2); //residuo de division de enteros
+        System.out.println(5.0/2.0);
+        double num1 = 3.45, num2 = 9.5, num3 = 5, num4 = 5.0001, num5 = 3.9, num6 = 3.2;
+        System.out.println("round de num1 es "+Math.round(num1));
+        System.out.println("round de num2 es "+Math.round(num2));
+        //floor (entero inferior) y ceil (entero superior)
+        System.out.println("ceil de num1 es "+Math.ceil(num1));
+        System.out.println("ceil de num2 es "+Math.ceil(num2));
+        System.out.println("ceil de num3 es "+Math.ceil(num3));
+        System.out.println("ceil de num4 es "+Math.ceil(num4));
+        System.out.println("ceil de num5 es "+Math.ceil(num5));
+        System.out.println("ceil de num6 es "+Math.ceil(num6));
         
-        
+        System.out.println("floor de num1 es "+Math.floor(num1));
+        System.out.println("floor de num2 es "+Math.floor(num2));
+        System.out.println("floor de num3 es "+Math.floor(num3));
+        System.out.println("floor de num4 es "+Math.floor(num4));
+        System.out.println("floor de num5 es "+Math.floor(num5));
+        System.out.println("floor de num6 es "+Math.floor(num6));
     }
     
 }
