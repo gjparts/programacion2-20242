@@ -29,12 +29,14 @@ public class Main {
         d = s.nextDouble();
         //resolver
         //por partes
-        /*double numerador, denominador;
-        numerador = a+b;
-        denominador = c-d;
-        System.out.println("El resultado es "+(numerador/denominador));*/
+        double numerador, denominador;
+        numerador = Math.pow(a+b,3);
+        denominador = Math.sqrt(c-d);
+        System.out.println("Forma 1: El resultado es "+(numerador/denominador));
+        
         //un solo calculo
-        System.out.println("El resultado es "+( (a+b)/(c-d) ));
+        System.out.println("Forma 2: El resultado es "+( Math.pow(a+b,3)/Math.sqrt(c-d) ));
+        
     }
     
 }
