@@ -100,6 +100,29 @@ public class Main {
         String apellido = "Portillo";
         apellido += punto; //apellido = apellido + punto
         System.out.println(apellido);
+        
+        String ciudad = "San Pedro Sula en el departamento de Cortés";
+        //generar una nueva variable String que sea una copia de la
+        //variable ciudad; pero reemplazar cada espacio en blanco
+        //por un asterisco, sin utilizar el metodo replace.
+        //imprimir la nueva variable String
+        String copia = "";
+        //recorrer String de origen y evaluar char por char
+        for( int i = 0; i < ciudad.length(); i++ ){
+            if( ciudad.charAt(i) == ' ' )
+                copia += '*';
+            else
+                copia += ciudad.charAt(i);
+        }
+        System.out.println("ciudad: "+ciudad);
+        System.out.println("copia: "+copia);
+        //otra forma de hacerlo (usando un operador ternario)
+        String copia2 = "";
+        for( int i = 0; i < ciudad.length(); i++ )
+            copia2 += ( ciudad.charAt(i) == ' ' ? '*' : ciudad.charAt(i) );
+        
+        System.out.println("ciudad: "+ciudad);
+        System.out.println("copia2: "+copia2);
     }
     
 }
