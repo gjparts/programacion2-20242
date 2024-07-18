@@ -1,4 +1,5 @@
 package pkg34_string09;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /*Metodo contains
@@ -20,5 +21,13 @@ public class Main {
         si lo que el usuario desea buscar se encuentra entonces
         responder: "Texto encontrado"
         del lo contrario responder: "Texto no se encontró"*/
+        Scanner qwe = new Scanner(System.in);
+        System.out.print("Digite lo que desea buscar dentro de str: ");
+        String buscar = qwe.nextLine();
+        
+        if( str.toUpperCase().contains( buscar.toUpperCase() ) == true )
+            System.out.println("Texto Encontrado");
+        else
+            System.out.println("Texto no se encontró");
     }    
 }
