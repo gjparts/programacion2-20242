@@ -10,6 +10,8 @@ package pkg39_gui02;
  * @author Gerardo
  */
 import javax.swing.JOptionPane; //clase para mostrar alertas
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 public class PantallaPrincipal extends javax.swing.JFrame {
 
     /**
@@ -30,7 +32,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         tituloUNAH = new javax.swing.JLabel();
         botonAlerta = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        caja1 = new javax.swing.JTextField();
+        botonCambioTitulo = new javax.swing.JButton();
+        botonFechaHora = new javax.swing.JButton();
+        labelFechaHora = new javax.swing.JLabel();
+        btnHabilitar = new javax.swing.JButton();
+        btnDeshabilitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("20012002049 - Gerardo");
@@ -59,11 +66,47 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(204, 255, 204));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 0, 51));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("algo");
+        caja1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        caja1.setForeground(new java.awt.Color(204, 0, 51));
+        caja1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        caja1.setText("algo");
+
+        botonCambioTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botonCambioTitulo.setText("Cambiar el Titulo de la ventana");
+        botonCambioTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambioTituloActionPerformed(evt);
+            }
+        });
+
+        botonFechaHora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonFechaHora.setText("Ver Fecha/Hora");
+        botonFechaHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFechaHoraActionPerformed(evt);
+            }
+        });
+
+        labelFechaHora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelFechaHora.setText("jLabel1");
+
+        btnHabilitar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnHabilitar.setText("Habilitar la caja de texto");
+        btnHabilitar.setToolTipText("");
+        btnHabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHabilitarActionPerformed(evt);
+            }
+        });
+
+        btnDeshabilitar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeshabilitar.setText("Deshabilitar la caja de texto");
+        btnDeshabilitar.setToolTipText("");
+        btnDeshabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeshabilitarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,15 +114,28 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(tituloUNAH, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(botonAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(58, 58, 58)
+                            .addComponent(labelFechaHora)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonFechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(botonCambioTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(tituloUNAH, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(botonAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addComponent(caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDeshabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(btnHabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +144,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloUNAH, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnHabilitar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeshabilitar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addComponent(botonCambioTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonFechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFechaHora))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,6 +180,45 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         //cambiamos el contenido del JLabel llamado tituloUNAH
         tituloUNAH.setText("PUMAS UNAH");
     }//GEN-LAST:event_botonAlertaActionPerformed
+
+    private void botonCambioTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambioTituloActionPerformed
+        this.setTitle("Este es el nuevo titulo de la ventana");
+    }//GEN-LAST:event_botonCambioTituloActionPerformed
+
+    private void botonFechaHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFechaHoraActionPerformed
+        //para usar fecha usamos la clase java.util.Calendar
+        //para darle formato a la fecha/hora usamos java.text.SimpleDateFormat
+        //crear un objeto Calendar
+        Calendar f1 = Calendar.getInstance();
+        //f1.set(2024, 6, 30, 17, 45, 23); esto es una fecha/hora fija (no cambia)
+        //lo anterior crea un objeto Calendar con la fecha/hora de la computadora
+        //mostrar dicha fecha en labelFechaHora
+        //pero antes hay que aplicar formato de fecha y hora
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss a");
+        labelFechaHora.setText( formateador.format( f1.getTime() ) );
+    }//GEN-LAST:event_botonFechaHoraActionPerformed
+
+    private void btnDeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeshabilitarActionPerformed
+        //setEditable en false impide escribir en la caja;
+        //pero permite seleccionar el texto
+        caja1.setEditable(false);
+        
+        //setEnabled en false impide hacer click en la caja de texto
+        //caja1.setEnabled(false);
+        
+        //setVisible en false oculta la caja
+        //caja1.setVisible(false);
+        
+        //elija Usted cual de los tres le sirve
+    }//GEN-LAST:event_btnDeshabilitarActionPerformed
+
+    private void btnHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabilitarActionPerformed
+        //aqui haga lo inverso que hizo en deshabilitar
+        caja1.setEditable(true);
+        //caja1.setEnabled(true);
+        //caja1.setVisible(true);
+        //elija Usted cual de los tres le sirve
+    }//GEN-LAST:event_btnHabilitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +257,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlerta;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton botonCambioTitulo;
+    private javax.swing.JButton botonFechaHora;
+    private javax.swing.JButton btnDeshabilitar;
+    private javax.swing.JButton btnHabilitar;
+    private javax.swing.JTextField caja1;
+    private javax.swing.JLabel labelFechaHora;
     private javax.swing.JLabel tituloUNAH;
     // End of variables declaration//GEN-END:variables
 }
