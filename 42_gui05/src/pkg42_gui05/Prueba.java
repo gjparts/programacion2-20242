@@ -3,20 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg41_gui04;
+package pkg42_gui05;
 
 /**
  *
  * @author Gerardo
  */
-import javax.swing.JOptionPane;
 import java.text.DecimalFormat;
-public class Cuadratica extends javax.swing.JFrame {
+public class Prueba extends javax.swing.JFrame {
+    //se recomienda poner aqui nuestras funciones
+    //esta funcion hace los calculos al escribir en las cajas
+    public void calcular(){
+        try{
+            total.setToolTipText("");
+            
+            double a,b,c,d,suma;
+            a = Double.parseDouble( caja1.getText() );
+            b = Double.parseDouble( caja2.getText() );
+            c = Double.parseDouble( caja3.getText() );
+            d = Double.parseDouble( caja4.getText() );
+            suma = a+b+c+d;
+            DecimalFormat f = new DecimalFormat();
+            f.setMaximumFractionDigits(2);
+            f.setMinimumFractionDigits(2);
+            total.setText( f.format(suma) );
+        }catch(Exception ex){
+            total.setText("ERROR");
+            total.setToolTipText("Revise los numeros digitados");
+        }
+    }
 
     /**
-     * Creates new form Cuadratica
+     * Creates new form Prueba
      */
-    public Cuadratica() {
+    public Prueba() {
         initComponents();
     }
 
@@ -36,58 +56,67 @@ public class Cuadratica extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         caja3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        total1 = new javax.swing.JTextField();
+        caja4 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        total2 = new javax.swing.JTextField();
-        botonCalcular = new javax.swing.JButton();
+        total = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("20012002049 Gerardo");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("a:");
+        jLabel1.setText("Numero 1:");
 
         caja1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         caja1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         caja1.setText("0.00");
+        caja1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                caja1KeyReleased(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel2.setText("b:");
+        jLabel2.setText("Numero 2:");
 
         caja2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         caja2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         caja2.setText("0.00");
+        caja2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                caja2KeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel3.setText("c:");
+        jLabel3.setText("Numero 3:");
 
         caja3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         caja3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         caja3.setText("0.00");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel4.setText("x1:");
-
-        total1.setEditable(false);
-        total1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        total1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        total1.setText("0.00");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel5.setText("x2:");
-
-        total2.setEditable(false);
-        total2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        total2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        total2.setText("0.00");
-
-        botonCalcular.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        botonCalcular.setText("Calcular");
-        botonCalcular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCalcularActionPerformed(evt);
+        caja3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                caja3KeyReleased(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel4.setText("Numero 4:");
+
+        caja4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        caja4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        caja4.setText("0.00");
+        caja4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                caja4KeyReleased(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setText("Suma:");
+
+        total.setEditable(false);
+        total.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        total.setText("0.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,32 +127,25 @@ public class Cuadratica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(caja1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(caja1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(caja2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(caja2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(caja3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(caja3))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(total1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(total2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonCalcular)
-                .addGap(84, 84, 84))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(total)
+                            .addComponent(caja4, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,56 +165,32 @@ public class Cuadratica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(total1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(caja4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(total2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(botonCalcular)
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
-        try{
-            double a,b,c,x1,x2;
-            a = Double.parseDouble(caja1.getText());
-            b = Double.parseDouble(caja2.getText());
-            c = Double.parseDouble(caja3.getText());
-            //validaciones
-            if( a == 0 )
-                JOptionPane.showMessageDialog(this, "A no puede ser cero.");
-            else{
-                //calculo del discriminante
-                double discriminante = Math.pow(b, 2)-4*a*c;
-                if( discriminante >= 0 ){
-                    //se acepta, ya podemos calcular x1 y x2
-                    x1 = (-b+Math.sqrt(discriminante))/2*a;
-                    x2 = (-b-Math.sqrt(discriminante))/2*a;
-                    //colocar los totales en las cajas de texto:
-                    //crear un objeto para dar formato decimal a los totales
-                    DecimalFormat formateador = new DecimalFormat();
-                    //configurar formato a ocho decimales
-                    formateador.setMaximumFractionDigits(8);
-                    formateador.setMinimumFractionDigits(8);
-                    //aplicar format no afecta a la variable original
-                    total1.setText( formateador.format(x1) );
-                    total2.setText( formateador.format(x2) );
-                }
-                else
-                    JOptionPane.showMessageDialog(this, "Discrimante negativo, no se puede continuar");
-                
-            }
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Revise los valores proporcionados.");
-            total1.setText("ERROR");
-            total2.setText("ERROR");
-        }
-    }//GEN-LAST:event_botonCalcularActionPerformed
+    private void caja1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caja1KeyReleased
+        calcular();
+    }//GEN-LAST:event_caja1KeyReleased
+
+    private void caja2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caja2KeyReleased
+        calcular();
+    }//GEN-LAST:event_caja2KeyReleased
+
+    private void caja3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caja3KeyReleased
+        calcular();
+    }//GEN-LAST:event_caja3KeyReleased
+
+    private void caja4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caja4KeyReleased
+        calcular();
+    }//GEN-LAST:event_caja4KeyReleased
 
     /**
      * @param args the command line arguments
@@ -211,35 +209,34 @@ public class Cuadratica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cuadratica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cuadratica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cuadratica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cuadratica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuadratica().setVisible(true);
+                new Prueba().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCalcular;
     private javax.swing.JTextField caja1;
     private javax.swing.JTextField caja2;
     private javax.swing.JTextField caja3;
+    private javax.swing.JTextField caja4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField total1;
-    private javax.swing.JTextField total2;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }
